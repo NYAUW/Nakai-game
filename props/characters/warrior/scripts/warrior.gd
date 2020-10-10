@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 7
+var speed = 5
 var maxHealth = 100
 var enemyDamage = 25
 
@@ -30,7 +30,7 @@ func take_Damage(damageCount):
 	
 	if(health <= 0):
 		health = 0
-		$AnimationPlayer.play("death_a")
+		$AnimationPlayer.play("die")
 		queue_free()
 		
 		
@@ -43,28 +43,11 @@ func ai_get_direction():
 
 
 func ai_move():
-	var direction = ai_get_direction() 
+	var direction = ai_get_direction()
 	var motion = direction.normalized() * speed
-	
-	if motion <= Vector2( -5  , -3) and motion >= Vector2( -6  , -4):
-		direction_animation = "a"
-	if motion <= Vector2( 6  , -1 ) and motion >= Vector2( 5  , 0):
-		direction_animation = "d"
-	if motion >= Vector2( -1  , -7 ) and motion <= Vector2( 1  , -5):
-		direction_animation = "w"
-	if motion >= Vector2( -1  , 7 ) and motion <= Vector2( 0  , 5):
-		direction_animation = "s"
-	
-	if motion >= Vector2( -6  , -4 ) and motion <= Vector2( -3  , -2):
-		direction_animation = "wa"
-	#if motion >= Vector2( -6  , -4 ) and motion <= Vector2( -3  , -2):
-	#	direction_animation = "wd"
-		
 		
 	run = "run_" + direction_animation
-	
-	print(motion)
-	
+		
 	move_and_collide(motion);
 	$AnimatedSprite.play(run); 
 	
@@ -87,3 +70,5 @@ func _process(delta):
 		decide_to_attack()
 	else:
 		ai_move()
+	
+

@@ -19,11 +19,6 @@ config/name="nakai"
 run/main_scene="res://scenes/Kingdoms/TraoriGrindolynGrindohr/TraoriGrindolynGrindohr.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
-
 [input]
 
 move_up={
